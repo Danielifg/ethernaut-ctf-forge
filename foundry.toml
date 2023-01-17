@@ -1,2 +1,47 @@
-[profile.ci.fuzz]
+[profile.default]
+src = 'src'
+test = 'test'
+script = 'script'
+out = 'out'
+broadcast = 'broadcast'
+libs = ['lib']
 runs = 10_000
+auto_detect_solc = true
+sender = '0x1d3Af21a1889A1262980Fb8021bF91B792584A88'
+tx_origin = '0x1d3Af21a1889A1262980Fb8021bF91B792584A88'
+
+
+
+
+[rpc_endpoints]
+optimism = "https://rpc.ankr.com/optimism_testnet"
+mainnet = "${RPC_MAINNET}"
+goerli = "https://eth-goerli.alchemyapi.io/v2/${GOERLI_API_KEY}"
+
+
+[fuzz]
+runs = 256
+max_test_rejects = 65536
+seed = '0x3e8'
+dictionary_weight = 40
+include_storage = true
+include_push_bytes = true
+
+
+
+
+[invariant]
+runs = 256
+depth = 15
+fail_on_revert = false
+call_override = false
+dictionary_weight = 80
+include_storage = true
+include_push_bytes = true
+
+
+
+[fmt]
+line_length = 100
+tab_width = 2
+bracket_spacing = true
